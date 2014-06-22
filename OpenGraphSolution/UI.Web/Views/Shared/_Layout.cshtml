@@ -16,7 +16,7 @@
     @Html.OpenGraph_Facebook("cleytonferrari", "http://opengraph.apphb.com/", "article", "Open Graph em ASP .Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "TI Selvagem", "pt_BR", "https://www.facebook.com/cleytonferrari", "https://www.facebook.com/tiselvagem", "Technology", "asp.net,mvc,c#")
 
     @Html.OpenGraph_GooglePlus("https://plus.google.com/+cleytonferrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png")
-    
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +31,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Sobre", "Sobre", "Home", new { area = "" })</li>
+                    <li><a href="@Url.Action("Sobre","Home")">Sobre</a></li>
                 </ul>
             </div>
         </div>
@@ -39,6 +39,23 @@
 
     <div class="container body-content">
         @RenderBody()
+        <hr />
+        <h3>Seo</h3>
+        <pre>
+            @Html.OpenGraph_Seo("Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/").ToHtmlString()
+        </pre>
+        <h3>Twitter</h3>
+        <pre>
+            @Html.OpenGraph_Twitter("TiSelvagem", "CleytonFerrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "tiselvagem.com", "http://opengraph.apphb.com/").ToHtmlString()
+        </pre>
+        <h3>Facebook</h3>
+        <pre>
+            @Html.OpenGraph_Facebook("cleytonferrari", "http://opengraph.apphb.com/", "article", "Open Graph em ASP .Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "TI Selvagem", "pt_BR", "https://www.facebook.com/cleytonferrari", "https://www.facebook.com/tiselvagem", "Technology", "asp.net,mvc,c#").ToHtmlString()
+        </pre>
+        <h3>Google Plus</h3>
+        <pre>
+            @Html.OpenGraph_GooglePlus("https://plus.google.com/+cleytonferrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png").ToHtmlString()
+        </pre>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Cleyton Ferrari - <a href="http://www.tiselvagem.com.br">TI Selvagem</a> - <a href="https://plus.google.com/+cleytonferrari?rel=author">Google Plus</a></p>
