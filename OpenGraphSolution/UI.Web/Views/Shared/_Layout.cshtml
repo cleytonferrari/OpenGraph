@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using UI.Web.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,19 +9,9 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     
-    <!-- SEO -->
-    <meta name="description" content="Veja um exemplo de uso do Open Graph usando ASP.Net MVC">
-    <link rel="canonical" href="http://opengraph.apphb.com/">
-
-    <!-- Social: Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@("@")TISelvagem">
-    <meta name="twitter:creator" content="@("@")CleytonFerrari">
-    <meta name="twitter:title" content="Open Graph em ASP .Net MVC">
-    <meta name="twitter:description" content="Veja um exemplo de uso do Open Graph usando ASP.Net MVC">
-    <meta name="twitter:image:src" content="http://opengraph.apphb.com/Content/TISelvagemPost.png">
-    <meta name="twitter:domain" content="tiselvagem.com" />
-    <meta name="twitter:url" content="http://opengraph.apphb.com/" />
+    @Html.OpenGraph_Seo("Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/")
+    
+    @Html.OpenGraph_Twitter("TiSelvagem", "CleytonFerrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "tiselvagem.com", "http://opengraph.apphb.com/")
     
     <!-- Social: Facebook / Open Graph -->
     <meta property="fb:admins" content="cleytonferrari">
