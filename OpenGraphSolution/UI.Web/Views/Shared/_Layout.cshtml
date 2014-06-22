@@ -8,8 +8,8 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
-    @RenderSection("OpenGraph", required: false)
-    
+    @ViewBag.OpenGraph
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -33,6 +33,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
+        
         <footer>
             <p>&copy; @DateTime.Now.Year - Cleyton Ferrari - <a href="http://www.tiselvagem.com.br">TI Selvagem</a> - <a href="https://plus.google.com/+cleytonferrari?rel=author">Google Plus</a></p>
         </footer>
