@@ -8,31 +8,14 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    
+
     @Html.OpenGraph_Seo("Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/")
-    
+
     @Html.OpenGraph_Twitter("TiSelvagem", "CleytonFerrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "tiselvagem.com", "http://opengraph.apphb.com/")
-    
-    <!-- Social: Facebook / Open Graph -->
-    <meta property="fb:admins" content="cleytonferrari">
-    <meta property="og:url" content="http://opengraph.apphb.com/">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Open Graph em ASP .Net MVC">
-    <meta property="og:image" content="http://opengraph.apphb.com/Content/TISelvagemPost.png" />
-    <meta property="og:description" content="Veja um exemplo de uso do Open Graph usando ASP.Net MVC">
-    <meta property="og:site_name" content="TI Selvagem">
-    <meta property="article:author" content="https://www.facebook.com/cleytonferrari">
-    <meta property="article:publisher" content="https://www.facebook.com/tiselvagem">
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="article:section" content="Technology" />
-    <meta property="article:tag" content="asp.net" />
-    <meta property="article:tag" content="mvc" />
-    
-    <!-- Social: Google+ / Schema.org  -->
-    <link rel="author" href="https://plus.google.com/+cleytonferrari" />
-    <meta itemprop="name" content="Open Graph em ASP .Net MVC">
-    <meta itemprop="description" content="Veja um exemplo de uso do Open Graph usando ASP.Net MVC">
-    <meta itemprop="image" content="http://opengraph.apphb.com/Content/TISelvagemPost.png">
+
+    @Html.OpenGraph_Facebook("cleytonferrari", "http://opengraph.apphb.com/", "article", "Open Graph em ASP .Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "TI Selvagem", "pt_BR", "https://www.facebook.com/cleytonferrari", "https://www.facebook.com/tiselvagem", "Technology", "asp.net,mvc,c#")
+
+    @Html.OpenGraph_GooglePlus("https://plus.google.com/+cleytonferrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png")
     
 </head>
 <body>
@@ -47,8 +30,7 @@
                 @Html.ActionLink("Open Graph", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>

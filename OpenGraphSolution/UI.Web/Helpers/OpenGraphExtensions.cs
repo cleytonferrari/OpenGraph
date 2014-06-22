@@ -18,14 +18,14 @@ namespace UI.Web.Helpers
         /// <returns>String com as metas tags</returns>
         public static MvcHtmlString OpenGraph_Seo(this HtmlHelper helper, string description = "", string canonical = "")
         {
-            var meta = new StringBuilder();
-            meta.Append("<!-- Open Graph TISelvagem.com.br : SEO Tags -->\n\t");
+            var metas = "";
+            metas += "<!-- Open Graph TISelvagem.com.br : SEO -->\n\t";
 
-            meta.Append(String.Format("<meta name=\"description\" content=\"{0}\">\n\t", description));
-            meta.Append(String.Format("<link rel=\"canonical\" href=\"{0}\">\n\t", canonical));
+            metas += MontaMeta("description", description);
+            metas += MontaMeta("canonical", canonical);
 
-            meta.Append("<!-- /Open Graph TISelvagem.com.br : SEO Tags -->\n\t");
-            return new MvcHtmlString(meta.ToString());
+            metas += "<!-- /Open Graph TISelvagem.com.br : SEO -->\n\t";
+            return new MvcHtmlString(metas);
         }
 
         /// <summary>
@@ -41,22 +41,102 @@ namespace UI.Web.Helpers
         /// <param name="domain">Dominio da conta no Twitter: tiselvagem.com</param>
         /// <param name="url">URL da página. Ex.: http://www.tiselvagem.com.br</param>
         /// <returns>String com as metas tags</returns>
-        public static MvcHtmlString OpenGraph_Twitter(this HtmlHelper helper, string twitterSite = "", string twitterCreator = "", string title = "", string description = "", string imgSrc = "", string domain = "", string url = "", string card = "summary_large_image")
+        public static MvcHtmlString OpenGraph_Twitter(this HtmlHelper helper, string twitterSite = "", string twitterCreator = "", string title = "",
+            string description = "", string imgSrc = "", string domain = "", string url = "", string card = "summary_large_image")
         {
-            var meta = new StringBuilder();
-            meta.Append("<!-- Open Graph TISelvagem.com.br : Twitter Tags -->\n\t");
+            var meta = "";
+            meta += "<!-- Open Graph TISelvagem.com.br : Twitter -->\n\t";
 
-            meta.Append(String.Format("<meta name=\"twitter:card\" content=\"{0}\">\n\t", card));
-            meta.Append(String.Format("<meta name=\"twitter:site\" content=\"@{0}\">\n\t", twitterSite));
-            meta.Append(String.Format("<meta name=\"twitter:creator\" content=\"@{0}\">\n\t", twitterCreator));
-            meta.Append(String.Format("<meta name=\"twitter:title\" content=\"{0}\">\n\t", title));
-            meta.Append(String.Format("<meta name=\"twitter:description\" content=\"{0}\">\n\t", description));
-            meta.Append(String.Format("<meta name=\"twitter:image:src\" content=\"{0}\">\n\t", imgSrc));
-            meta.Append(String.Format("<meta name=\"twitter:domain\" content=\"{0}\">\n\t", domain));
-            meta.Append(String.Format("<meta name=\"twitter:url\" content=\"{0}\">\n\t", url));
+            meta += MontaMeta("twitter:card", card);
+            meta += MontaMeta("twitter:site", twitterSite);
+            meta += MontaMeta("twitter:creator", twitterCreator);
+            meta += MontaMeta("twitter:title", title);
+            meta += MontaMeta("twitter:description", description);
+            meta += MontaMeta("twitter:image:src", imgSrc);
+            meta += MontaMeta("twitter:domain", domain);
+            meta += MontaMeta("twitter:url", url);
             //todo: adicionar as outras tags dos apps
-            meta.Append("<!-- /Open Graph TISelvagem.com.br : Twitter Tags -->\n\t");
-            return new MvcHtmlString(meta.ToString());
+
+            meta += "<!-- /Open Graph TISelvagem.com.br : Twitter -->\n\t";
+            return new MvcHtmlString(meta);
+        }
+
+        /// <summary>
+        /// Gera as metas tags necessárias para as publicações no Facebook
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="admins">Id do administrador da página no facebook, que pode ser o ID numerico ou nome do usuario. Ex.: cleytonferrari</param>
+        /// <param name="url">URL da página. Ex.: http://www.tiselvagem.com.br</param>
+        /// <param name="tipo">Tipo de publicação.</param>
+        /// <param name="title">Titulo da postagem</param>
+        /// <param name="imgSrc">Caminho da imagem. Ex.: http://www.tiselvagem.com.br/logo.png </param>
+        /// <param name="description">Breve descrição do conteúdo da página</param>
+        /// <param name="siteName">Nome do Site. Ex.: TI Selvagem</param>
+        /// <param name="locale">Localização do site. Ex.: pt_BR</param>
+        /// <param name="author">Url do perfil do Facebook do autor. Ex.: https://www.facebook.com/cleytonferrari </param>
+        /// <param name="publisher">Url da Página no Facebook. Ex.: https://www.facebook.com/tiselvagem </param>
+        /// <param name="section">Seção de publicação do site. Ex.: Tecnologia</param>
+        /// <param name="tags">Lista de tags separadas por virgula. Ex.: MVC,ASP .Net,C# </param>
+        /// <returns>String com as metas tags</returns>
+        public static MvcHtmlString OpenGraph_Facebook(this HtmlHelper helper, string admins = "", string url = "", string tipo = "", string title = "",
+            string imgSrc = "", string description = "", string siteName = "", string locale = "", string author = "", string publisher = "",
+            string section = "", string tags = "")
+        {
+            var meta = "";
+            meta += "<!-- Open Graph TISelvagem.com.br : Facebook -->\n\t";
+
+            meta += MontaMeta("fb:admins", admins);
+            meta += MontaMeta("og:url", url);
+            meta += MontaMeta("og:type", tipo);
+            meta += MontaMeta("og:title", title);
+            meta += MontaMeta("og:image", imgSrc);
+            meta += MontaMeta("og:description", description);
+            meta += MontaMeta("og:site_name", siteName);
+            meta += MontaMeta("og:locale", locale);
+            meta += MontaMeta("article:author", author);
+            meta += MontaMeta("article:publisher", publisher);
+            meta += MontaMeta("article:section", section);
+
+            meta = tags.Split(',').Aggregate(meta, (current, tag) => current + MontaMeta("article:tag", tag));
+
+
+            meta += "<!-- /Open Graph TISelvagem.com.br : Facebook -->\n\t";
+            return new MvcHtmlString(meta);
+        }
+
+
+        /// <summary>
+        /// Gera as metas tags necessárias para as publicações no Google Plus
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="author">Url do perfil do google plus do author. Ex.: https://plus.google.com/+cleytonferrari </param>
+        /// <param name="title">Titulo da postagem</param>
+        /// <param name="description">Breve descrição do conteúdo da página</param>
+        /// <param name="imgSrc">Caminho da imagem. Ex.: http://www.tiselvagem.com.br/logo.png </param>
+        /// <returns>String com as metas tags</returns>
+        public static MvcHtmlString OpenGraph_GooglePlus(this HtmlHelper helper, string author = "", string title = "", string description = "", string imgSrc = "")
+        {
+            var meta = "";
+            meta += "<!-- Open Graph TISelvagem.com.br : Google Plus -->\n\t";
+
+            meta += String.Format("<link rel=\"author\" href=\"{0}\" />\n\t", author);
+            meta += String.Format("<meta itemprop=\"name\" content=\"{0}\">\n\t", title);
+            meta += String.Format("<meta itemprop=\"description\" content=\"{0}\">\n\t", description);
+            meta += String.Format("<meta itemprop=\"image\" content=\"{0}\">\n\t", imgSrc);
+
+            meta += "<!-- /Open Graph TISelvagem.com.br : Google Plus -->\n\t";
+            return new MvcHtmlString(meta);
+        }
+
+        /// <summary>
+        /// Monta html da Meta Tag
+        /// </summary>
+        /// <param name="name">Tipo da Meta Tag</param>
+        /// <param name="content">Conteúdo da Meta Tag</param>
+        /// <returns>String representando a meta tag</returns>
+        private static string MontaMeta(string name, string content)
+        {
+            return String.Format("<meta name=\"{0}\" content=\"{1}\">\n\t", name, content);
         }
     }
 }
