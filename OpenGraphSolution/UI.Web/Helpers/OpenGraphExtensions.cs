@@ -19,12 +19,12 @@ namespace UI.Web.Helpers
         public static MvcHtmlString OpenGraph_Seo(this HtmlHelper helper, string description = "", string canonical = "")
         {
             var metas = "";
-            metas += "<!-- Open Graph TISelvagem.com.br : SEO -->\n\t";
-
+            metas += "\n\t<!-- Open Graph TISelvagem.com.br : SEO -->";
+            
             metas += MontaMeta("description", description);
             metas += MontaMeta("canonical", canonical);
 
-            metas += "<!-- /Open Graph TISelvagem.com.br : SEO -->\n\t";
+            metas += "\n\t<!-- /Open Graph TISelvagem.com.br : SEO -->";
             return new MvcHtmlString(metas);
         }
 
@@ -45,7 +45,7 @@ namespace UI.Web.Helpers
             string description = "", string imgSrc = "", string domain = "", string url = "", string card = "summary_large_image")
         {
             var meta = "";
-            meta += "<!-- Open Graph TISelvagem.com.br : Twitter -->\n\t";
+            meta += "\n\t<!-- Open Graph TISelvagem.com.br : Twitter -->";
 
             meta += MontaMeta("twitter:card", card);
             meta += MontaMeta("twitter:site", twitterSite);
@@ -57,7 +57,7 @@ namespace UI.Web.Helpers
             meta += MontaMeta("twitter:url", url);
             //todo: adicionar as outras tags dos apps
 
-            meta += "<!-- /Open Graph TISelvagem.com.br : Twitter -->\n\t";
+            meta += "\n\t<!-- /Open Graph TISelvagem.com.br : Twitter -->";
             return new MvcHtmlString(meta);
         }
 
@@ -83,7 +83,7 @@ namespace UI.Web.Helpers
             string section = "", string tags = "")
         {
             var meta = "";
-            meta += "<!-- Open Graph TISelvagem.com.br : Facebook -->\n\t";
+            meta += "\n\t<!-- Open Graph TISelvagem.com.br : Facebook -->";
 
             meta += MontaMeta("fb:admins", admins);
             meta += MontaMeta("og:url", url);
@@ -100,7 +100,7 @@ namespace UI.Web.Helpers
             meta = tags.Split(',').Aggregate(meta, (current, tag) => current + MontaMeta("article:tag", tag));
 
 
-            meta += "<!-- /Open Graph TISelvagem.com.br : Facebook -->\n\t";
+            meta += "\n\t<!-- /Open Graph TISelvagem.com.br : Facebook -->";
             return new MvcHtmlString(meta);
         }
 
@@ -117,14 +117,14 @@ namespace UI.Web.Helpers
         public static MvcHtmlString OpenGraph_GooglePlus(this HtmlHelper helper, string author = "", string title = "", string description = "", string imgSrc = "")
         {
             var meta = "";
-            meta += "<!-- Open Graph TISelvagem.com.br : Google Plus -->\n\t";
+            meta += "\n\t<!-- Open Graph TISelvagem.com.br : Google Plus -->";
 
-            meta += String.Format("<link rel=\"author\" href=\"{0}\" />\n\t", author);
-            meta += String.Format("<meta itemprop=\"name\" content=\"{0}\">\n\t", title);
-            meta += String.Format("<meta itemprop=\"description\" content=\"{0}\">\n\t", description);
-            meta += String.Format("<meta itemprop=\"image\" content=\"{0}\">\n\t", imgSrc);
+            meta += String.Format("\n\t<link rel=\"author\" href=\"{0}\" />", author);
+            meta += String.Format("\n\t<meta itemprop=\"name\" content=\"{0}\">", title);
+            meta += String.Format("\n\t<meta itemprop=\"description\" content=\"{0}\">", description);
+            meta += String.Format("\n\t<meta itemprop=\"image\" content=\"{0}\">", imgSrc);
 
-            meta += "<!-- /Open Graph TISelvagem.com.br : Google Plus -->\n\t";
+            meta += "\n\t<!-- /Open Graph TISelvagem.com.br : Google Plus -->";
             return new MvcHtmlString(meta);
         }
 
@@ -136,7 +136,7 @@ namespace UI.Web.Helpers
         /// <returns>String representando a meta tag</returns>
         private static string MontaMeta(string name, string content)
         {
-            return String.Format("<meta name=\"{0}\" content=\"{1}\">\n\t", name, content);
+            return String.Format("\n\t<meta name=\"{0}\" content=\"{1}\">", name, content);
         }
     }
 }
