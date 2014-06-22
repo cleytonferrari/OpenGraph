@@ -1,6 +1,18 @@
-﻿
+﻿@using UI.Web.Helpers
+
 @{
     ViewBag.Title = "Sobre";
+}
+
+@section OpenGraph
+{
+    @Html.OpenGraph_Seo("Sobre o Open Graph", "http://opengraph.apphb.com/Home/Sobre")
+
+    @Html.OpenGraph_Twitter("TiSelvagem", "CleytonFerrari", "Sobre o Open Graph", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "tiselvagem.com", "http://opengraph.apphb.com/Home/Sobre")
+
+    @Html.OpenGraph_Facebook("cleytonferrari", "http://opengraph.apphb.com/Home/Sobre", "article", "Sobre o Open Graph", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "TI Selvagem", "pt_BR", "https://www.facebook.com/cleytonferrari", "https://www.facebook.com/tiselvagem", "Technology", "asp.net")
+
+    @Html.OpenGraph_GooglePlus("https://plus.google.com/+cleytonferrari", "Sobre o Open Graph", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png")
 }
 
 <h2>Sobre Open Graph</h2>

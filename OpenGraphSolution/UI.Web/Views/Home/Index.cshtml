@@ -1,7 +1,20 @@
-﻿
+﻿@using UI.Web.Helpers
+
 @{
     ViewBag.Title = "Open Graph - Home";
 }
+
+@section OpenGraph
+{
+    @Html.OpenGraph_Seo("Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/")
+
+    @Html.OpenGraph_Twitter("TiSelvagem", "CleytonFerrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "tiselvagem.com", "http://opengraph.apphb.com/")
+
+    @Html.OpenGraph_Facebook("cleytonferrari", "http://opengraph.apphb.com/", "article", "Open Graph em ASP .Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "TI Selvagem", "pt_BR", "https://www.facebook.com/cleytonferrari", "https://www.facebook.com/tiselvagem", "Technology", "asp.net,mvc,c#")
+
+    @Html.OpenGraph_GooglePlus("https://plus.google.com/+cleytonferrari", "Open Graph em ASP .Net MVC", "Veja um exemplo de uso do Open Graph usando ASP.Net MVC", "http://opengraph.apphb.com/Content/TISelvagemPost.png")
+}
+
 
 <h2>Exemplo de Open Graph</h2>
 <p><em>Exiba o código fonte desta página para ver o exemplo de uso do Open Graph</em></p>
